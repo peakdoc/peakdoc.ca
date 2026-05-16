@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cam Williams — PeakDoc</title>
-  <meta name="description" content="Cardiac anesthesiologist. Mountaineer. Aviator.">
+  <title>Peak Doc</title>
+  <meta name="description" content="Peak Doc">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -43,6 +43,7 @@
     .mountains {
       position: fixed;
       bottom: 0; left: 0; right: 0;
+      height: 70vh;
       z-index: 1;
       pointer-events: none;
     }
@@ -117,8 +118,9 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
+      text-align: center;
       padding: 0 2.5rem 8rem;
-      max-width: 780px;
     }
 
     .eyebrow {
@@ -133,19 +135,29 @@
 
     h1 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3.2rem, 7vw, 5.8rem);
+      font-size: clamp(4rem, 10vw, 8rem);
       font-weight: 300;
-      line-height: 1.05;
-      letter-spacing: -0.01em;
+      line-height: 1.0;
+      letter-spacing: 0.04em;
       color: var(--bone);
-      margin-bottom: 1.8rem;
+      margin-bottom: 2.5rem;
       opacity: 0;
       animation: fadeUp 0.9s 0.5s forwards;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
     }
 
-    h1 em {
-      font-style: italic;
-      color: var(--bone2);
+    .cross {
+      display: flex;
+      align-items: center;
+      opacity: 0.9;
+      flex-shrink: 0;
+    }
+
+    .cross svg {
+      width: clamp(16px, 2.5vw, 28px);
+      height: clamp(16px, 2.5vw, 28px);
     }
 
     .descriptor {
@@ -363,21 +375,81 @@
 <canvas id="stars"></canvas>
 
 <!-- Mountain silhouette SVG -->
-<svg class="mountains" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="mtGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#162233"/>
-      <stop offset="100%" stop-color="#0d1b2a"/>
-    </linearGradient>
-  </defs>
-  <!-- Far range -->
-  <polygon points="0,320 0,200 120,140 200,180 310,100 420,155 520,80 620,130 700,60 800,115 920,50 1040,110 1140,70 1260,125 1360,85 1440,130 1440,320" fill="rgba(22,34,51,0.6)"/>
-  <!-- Near range -->
-  <polygon points="0,320 0,260 80,230 180,270 280,195 400,240 500,170 600,220 720,150 840,200 960,160 1080,210 1200,175 1320,215 1440,185 1440,320" fill="rgba(13,27,42,0.85)"/>
-  <!-- Snowcap highlights -->
-  <polyline points="520,80 540,68 560,80" fill="none" stroke="rgba(232,224,208,0.15)" stroke-width="1"/>
-  <polyline points="700,60 720,46 742,60" fill="none" stroke="rgba(232,224,208,0.18)" stroke-width="1"/>
-  <polyline points="920,50 942,34 962,50" fill="none" stroke="rgba(232,224,208,0.2)" stroke-width="1.5"/>
+<svg class="mountains" viewBox="0 0 1440 520" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Distant far range — pale, high -->
+  <polygon points="
+    0,520 0,340
+    60,310 110,330 160,270 210,295 260,240 310,265 355,210 400,240
+    440,195 480,225 520,175 560,205 600,160 640,188 680,145 720,170
+    760,130 800,158 840,120 880,148 920,110 960,140 1000,105 1040,135
+    1080,115 1120,145 1160,125 1200,155 1240,130 1280,160 1320,140 1360,165 1400,145 1440,170
+    1440,520"
+    fill="rgba(30,48,68,0.45)"/>
+
+  <!-- Snow on distant peaks — bright slivers -->
+  <polyline points="355,210 370,195 385,210" fill="none" stroke="rgba(232,224,208,0.25)" stroke-width="1.5"/>
+  <polyline points="520,175 538,158 556,175" fill="none" stroke="rgba(232,224,208,0.3)" stroke-width="1.5"/>
+  <polyline points="600,160 618,142 636,160" fill="none" stroke="rgba(232,224,208,0.28)" stroke-width="1.5"/>
+  <polyline points="680,145 700,126 720,145" fill="none" stroke="rgba(232,224,208,0.32)" stroke-width="2"/>
+  <polyline points="760,130 782,108 804,130" fill="none" stroke="rgba(232,224,208,0.35)" stroke-width="2"/>
+  <polyline points="840,120 864,97 888,120" fill="none" stroke="rgba(232,224,208,0.38)" stroke-width="2"/>
+  <polyline points="920,110 944,88 968,110" fill="none" stroke="rgba(232,224,208,0.4)" stroke-width="2.5"/>
+  <polyline points="1000,105 1022,84 1044,105" fill="none" stroke="rgba(232,224,208,0.35)" stroke-width="2"/>
+
+  <!-- Snow fill patches on distant range -->
+  <polygon points="760,130 782,108 804,130 795,130 782,115 769,130" fill="rgba(220,215,205,0.12)"/>
+  <polygon points="840,120 864,97 888,120 876,120 864,108 852,120" fill="rgba(220,215,205,0.14)"/>
+  <polygon points="920,110 944,88 968,110 954,110 944,98 934,110" fill="rgba(220,215,205,0.16)"/>
+
+  <!-- Mid range — darker, rugged -->
+  <polygon points="
+    0,520 0,400
+    40,385 80,370 120,345 155,362 185,325 220,345 255,305 285,328
+    315,290 345,312 375,275 405,298 435,258 465,282 495,242 525,268
+    555,230 585,255 615,218 645,244 675,205 705,230 730,195 758,222
+    785,188 812,215 840,178 868,206 895,170 922,198 950,162 978,192
+    1005,175 1032,200 1060,182 1088,208 1115,188 1142,215 1168,198
+    1195,222 1222,205 1250,228 1278,210 1306,235 1334,215 1362,240 1390,220 1420,242 1440,228
+    1440,520"
+    fill="rgba(18,36,54,0.7)"/>
+
+  <!-- Snow on mid peaks -->
+  <polyline points="435,258 455,238 475,258" fill="none" stroke="rgba(232,224,208,0.3)" stroke-width="1.5"/>
+  <polyline points="495,242 518,218 540,242" fill="none" stroke="rgba(232,224,208,0.35)" stroke-width="2"/>
+  <polyline points="555,230 578,205 601,230" fill="none" stroke="rgba(232,224,208,0.3)" stroke-width="1.5"/>
+  <polyline points="675,205 700,178 725,205" fill="none" stroke="rgba(232,224,208,0.38)" stroke-width="2"/>
+  <polyline points="730,195 758,165 786,195" fill="none" stroke="rgba(232,224,208,0.42)" stroke-width="2.5"/>
+  <polyline points="840,178 868,148 896,178" fill="none" stroke="rgba(232,224,208,0.45)" stroke-width="2.5"/>
+  <polyline points="895,170 924,138 953,170" fill="none" stroke="rgba(232,224,208,0.48)" stroke-width="3"/>
+  <polyline points="950,162 980,130 1010,162" fill="none" stroke="rgba(232,224,208,0.45)" stroke-width="2.5"/>
+
+  <!-- Snow fill mid range -->
+  <polygon points="730,195 758,165 786,195 775,195 758,175 741,195" fill="rgba(220,215,205,0.1)"/>
+  <polygon points="840,178 868,148 896,178 882,178 868,160 854,178" fill="rgba(220,215,205,0.12)"/>
+  <polygon points="895,170 924,138 953,170 938,170 924,150 910,170" fill="rgba(220,215,205,0.14)"/>
+  <polygon points="950,162 980,130 1010,162 994,162 980,142 966,162" fill="rgba(220,215,205,0.12)"/>
+
+  <!-- Near foreground ridge — darkest, fills bottom -->
+  <polygon points="
+    0,520 0,440
+    35,428 70,415 105,435 140,408 175,422 210,395 245,412 280,385
+    315,402 350,375 385,392 420,368 455,385 490,358 525,375
+    560,350 595,368 630,342 665,360 700,335 732,354 762,330
+    792,348 822,324 852,342 882,318 912,338 942,315 972,335
+    1002,312 1032,332 1062,318 1092,338 1122,322 1152,342
+    1182,325 1212,345 1242,328 1272,348 1302,332 1332,352 1362,338 1392,358 1420,342 1440,355
+    1440,520"
+    fill="rgba(10,22,34,0.92)"/>
+
+  <!-- Scattered snow patches on foreground -->
+  <polyline points="490,358 510,340 530,358" fill="none" stroke="rgba(232,224,208,0.2)" stroke-width="1"/>
+  <polyline points="700,335 722,312 744,335" fill="none" stroke="rgba(232,224,208,0.22)" stroke-width="1.5"/>
+  <polyline points="822,324 845,300 868,324" fill="none" stroke="rgba(232,224,208,0.25)" stroke-width="1.5"/>
+  <polyline points="942,315 966,290 990,315" fill="none" stroke="rgba(232,224,208,0.2)" stroke-width="1"/>
+
+  <!-- Subtle ridge texture lines -->
+  <polyline points="0,460 80,448 160,455 240,442 320,450 400,438 480,446 560,434 640,442 720,430 800,438 880,426 960,434 1040,422 1120,430 1200,418 1280,426 1360,414 1440,422" fill="none" stroke="rgba(232,224,208,0.04)" stroke-width="1"/>
+  <polyline points="0,480 80,470 160,476 240,465 320,472 400,460 480,468 560,456 640,464 720,452 800,460 880,448 960,456 1040,444 1120,452 1200,440 1280,448 1360,436 1440,444" fill="none" stroke="rgba(232,224,208,0.03)" stroke-width="1"/>
 </svg>
 
 <!-- Password Modal -->
@@ -397,40 +469,35 @@
 <!-- Page -->
 <div class="page">
   <header>
-    <a class="wordmark" href="/">Peakdoc</a>
+    <a class="wordmark" href="/">Peak Doc</a>
     <nav>
       <a href="#" onclick="openModal(); return false;" class="nav-enter">Enter Site</a>
     </nav>
   </header>
 
   <main class="hero">
-    <p class="eyebrow">peakdoc.ca</p>
-    <h1>Cardiac<br><em>Anesthesiologist.</em><br>Mountaineer.</h1>
-    <p class="descriptor">
-      Royal Columbian Hospital
-      <span>·</span>
-      Fraser Health
-      <span>·</span>
-      BC, Canada
-    </p>
-    <p class="bio">
-      Subspecialty cardiac anesthesia and perioperative echocardiography. 
-      Chasing the 58 Canadian Rockies 11,000ers in the hours between cases.
-    </p>
-    <div class="coming-soon">
-      <div class="pill">11,000ers</div>
-      <div class="pill">Adventures</div>
-      <div class="pill">Medical</div>
-      <div class="pill">About</div>
-    </div>
+    <h1>
+      <span class="cross" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="12" y="2" width="4" height="24" rx="1" fill="#c0392b"/>
+          <rect x="2" y="12" width="24" height="4" rx="1" fill="#c0392b"/>
+        </svg>
+      </span>
+      Peak&nbsp;Doc
+      <span class="cross" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="12" y="2" width="4" height="24" rx="1" fill="#c0392b"/>
+          <rect x="2" y="12" width="24" height="4" rx="1" fill="#c0392b"/>
+        </svg>
+      </span>
+    </h1>
     <div class="cta-row">
       <a href="#" class="btn-primary" onclick="openModal(); return false;">Enter Site</a>
-      <a href="mailto:cwilliams@peakdoc.ca" class="btn-ghost">Get in touch</a>
     </div>
   </main>
 </div>
 
-<div class="elevation-tag">11,000 ft · Canadian Rockies</div>
+
 
 <script>
   // ── Starfield ──
